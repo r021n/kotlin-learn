@@ -47,4 +47,22 @@ fun main() {
     for (buah in buahBuahan) {
         println("Buah ${buah}")
     }
+
+    println("\n===================\nPerulangan berdasarkan kondisi\n===================")
+
+    var hitungan: Int = 1
+    while (hitungan <= 5) {
+        println("hitungan ke -${hitungan}")
+        hitungan++
+    }
+
+    var selesai: Boolean = false
+    var percobaan: Int = 0
+    while (!selesai) {
+        percobaan++
+        println("percobaan ke -${percobaan}")
+        if (percobaan >= 3){
+         selesai = true
+        }
+    }
 }
