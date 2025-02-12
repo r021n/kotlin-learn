@@ -33,4 +33,31 @@ fun main() {
     hurufSet.add('B')
 
     println("Huruf set setelah ada penambahan " + hurufSet)
+
+//    Map => Koleksi pasangan kunci-nilai
+    println("\n===============\nimmutable map\n===============")
+    val nilaiSiswa: Map<String, Int> = mapOf(
+        "Budi" to 85,
+        "Sinti" to 90,
+        "Andi" to 78,
+    )
+    println("Nilai para siswa adalah: ${nilaiSiswa}")
+    println("Nilai Budi: " + nilaiSiswa["Budi"])
+    println("Nilai Joko: " + nilaiSiswa["Joko"])
+
+    println("\n===============\niterasi melalui map\n===============")
+    for ((nama, nilai) in nilaiSiswa) {
+        println("$nama mendapat nilai $nilai")
+    }
+
+    println("\n===============\nmutable map\n===============")
+    val stokBarang: MutableMap<String, Int> = mutableMapOf(
+        "Buku" to 200,
+        "Pensil" to 100,
+    )
+
+    stokBarang["Pulpen"] = 200
+    stokBarang["Buku"] = 150
+
+    println("Stok barang setelah diubah $stokBarang")
 }
