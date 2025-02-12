@@ -20,4 +20,17 @@ fun main() {
     daftarAngka[1] = 25 // mengganti sebuah index menjadi value baru
 
     println("Daftar angka setelah diubah" + daftarAngka)
+
+//    Set => tidak terurut dan tidak boleh terulang
+    println("\n===============\nimmutable set\n===============")
+    val angkaUnik: Set<Int> = setOf(1, 2, 3, 4, 5, 6, 7)
+    println("Angka unik ${angkaUnik}")
+    println("Angka unik ${angkaUnik.size}")
+
+    println("\n===============\nmutable set\n===============")
+    val hurufSet: MutableSet<Char> = mutableSetOf('A', 'B', 'C')
+    hurufSet.add('D')
+    hurufSet.add('B')
+
+    println("Huruf set setelah ada penambahan " + hurufSet)
 }
