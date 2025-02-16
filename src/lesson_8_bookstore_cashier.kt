@@ -8,8 +8,8 @@ fun main() {
         println("3. Hapus buku")
         println("4. Edit buku")
         println("5. Lihat sisa buku")
-        println("6. Riwayat penjualan buku")
-        println("7. Jual buku")
+        println("6. Jual buku")
+        println("7. Riwayat penjualan buku")
         println("8. Keluar aplikasi")
         print("Masukkan pilihanmu: ")
     }
@@ -114,6 +114,21 @@ fun main() {
         }
     }
 
+    fun sisaBuku() {
+        print("Masukan judul buku: ")
+        val cekBuku = readLine()
+        if (cekBuku != null && cekBuku.isNotEmpty()){
+            val indexBuku = cariIndexBuku(daftarBuku, cekBuku)
+            if (indexBuku != -1) {
+                println("Buku \"${cekBuku}\" tersisa ${daftarBuku[indexBuku]["Stok"]}")
+            } else {
+                println("Buku \"${cekBuku}\" tidak tersedia")
+            }
+        } else {
+            println("Input tidak valid")
+        }
+    }
+
     do {
         tampilkanMenu()
         val userInput= readLine()
@@ -122,8 +137,9 @@ fun main() {
             "2" -> tambahBuku()
             "3" -> hapusBuku()
             "4" -> editBuku()
-            "5" -> println("Keluar dari menu")
+            "5" -> sisaBuku()
+            "6" -> println("Keluar dari menu")
             else -> println("input tidak valid")
         }
-    } while (userInput != "5")
+    } while (userInput != "6")
 }
