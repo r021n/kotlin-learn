@@ -129,6 +129,31 @@ fun main() {
         }
     }
 
+    fun jualBuku() {
+        print("Masukan judul buku yang dibeli: ")
+        val judulBuku = readLine()
+        print("Masukkan jumlah buku yang dibeli: ")
+        val jumlahBeli = readLine()
+        if (judulBuku != null && judulBuku.isNotEmpty() && jumlahBeli != null){
+            val indexBuku = cariIndexBuku(daftarBuku, judulBuku)
+            if (indexBuku != -1) {
+                val buku = daftarBuku[indexBuku]
+                val stok = buku["Stok"] as? Int?: 0
+                val jumlah = jumlahBeli.toIntOrNull()
+                if (stok >= jumlah!!) {
+                    buku["Stok"] = stok - jumlah
+                    println("Pembelian berhasil dilakukan")
+                } else {
+                    println("Maaf, buku tersebut sudah habis")
+                }
+            } else {
+                println("Maaf, buku tersebut bukan buku kami. Atau bisa lakukan input lagi")
+            }
+        } else {
+            println("Input yang diberikan tidak valid")
+        }
+    }
+
     do {
         tampilkanMenu()
         val userInput= readLine()
