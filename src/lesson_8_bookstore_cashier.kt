@@ -1,5 +1,9 @@
+import java.text.SimpleDateFormat
+import java.util.*
+
 fun main() {
-    var daftarBuku: MutableList<MutableMap<String, Any>> = mutableListOf()
+    val daftarBuku: MutableList<MutableMap<String, Any>> = mutableListOf()
+    val bukuTerjual: MutableList<MutableList<Any>> = mutableListOf()
 
     fun tampilkanMenu() {
         println("\n---Menu Pilihan---")
@@ -129,6 +133,13 @@ fun main() {
         }
     }
 
+    fun tambahKeRiwayat(namaBuku: String, jumlahBeli: Int) {
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
+        val bukuDibeli: MutableList<Any> = mutableListOf(namaBuku, jumlahBeli, currentDate)
+        bukuTerjual.add(bukuDibeli)
+    }
+
     fun jualBuku() {
         print("Masukan judul buku yang dibeli: ")
         val judulBuku = readLine()
@@ -138,19 +149,31 @@ fun main() {
             val indexBuku = cariIndexBuku(daftarBuku, judulBuku)
             if (indexBuku != -1) {
                 val buku = daftarBuku[indexBuku]
-                val stok = buku["Stok"] as? Int?: 0
-                val jumlah = jumlahBeli.toIntOrNull()
-                if (stok >= jumlah!!) {
+                val stok = buku["Stok"]?.toString()?.toIntOrNull() ?: 0
+                val jumlah = jumlahBeli.toInt()
+                if (stok >= jumlah) {
                     buku["Stok"] = stok - jumlah
+                    tambahKeRiwayat(buku["Judul"].toString(), jumlah)
                     println("Pembelian berhasil dilakukan")
                 } else {
-                    println("Maaf, buku tersebut sudah habis")
+                    println("Maaf, stok buku tersebut tidak mencukupi")
                 }
             } else {
                 println("Maaf, buku tersebut bukan buku kami. Atau bisa lakukan input lagi")
             }
         } else {
             println("Input yang diberikan tidak valid")
+        }
+    }
+
+    fun riwayatPenjualan() {
+        if (bukuTerjual.isNotEmpty()) {
+            println("\n---Daftar Riwayat Penjualan Buku---")
+            for (bukuLaku in bukuTerjual){
+                println("${bukuLaku[0]}\t ${bukuLaku[1]}\t ${bukuLaku[2]}")
+            }
+        } else {
+            println("\nBelum ada buku yang terjual")
         }
     }
 
@@ -163,8 +186,10 @@ fun main() {
             "3" -> hapusBuku()
             "4" -> editBuku()
             "5" -> sisaBuku()
-            "6" -> println("Keluar dari menu")
+            "6" -> jualBuku()
+            "7" -> riwayatPenjualan()
+            "8" -> println("Keluar dari menu")
             else -> println("input tidak valid")
         }
-    } while (userInput != "6")
+    } while (userInput != "8")
 }
