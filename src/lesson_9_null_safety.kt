@@ -22,4 +22,16 @@ fun main(){
     val nonNullableName: String? = "Anton"
     val result = nonNullableName ?: "Dono"
     println(result)
+
+//  -----operator not null assertion "!!" untuk memaksa menganggap sebuah variabel nullable tidak bernilai null.
+//  jika ternyata variable tersebut berniali null, maka akan megembalikan NullPointerException-----
+    println("\n=================\npenggunaan not null assertion (!!)\n=================\n")
+    val nullableName2: String? = null
+
+    try {
+        val lengthNull = nullableName2!!.length
+        println(lengthNull)
+    } catch (e: NullPointerException) {
+        println("Terjadi NullPointerException")
+    }
 }
