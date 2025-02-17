@@ -11,7 +11,7 @@ fun main(){
 
     val nullName: String? = null
     val nullNameLength = nullName?.length
-    println(nullNameLength)
+    println(nullNameLength) // output: null
 
 //  -----operator elvis "?:" untuk memberikan nilai default jika objek bernilai null-----
     println("\n=================\npenggunaan operator elvis (?:)\n=================\n")
@@ -33,5 +33,18 @@ fun main(){
         println(lengthNull)
     } catch (e: NullPointerException) {
         println("Terjadi NullPointerException")
+    }
+
+//  -----fungsi "let" digunakan untuk mengeksekusi blok kode jika sebuah objek tidak bernilai null-----
+    println("\n=================\npenggunaan fungsi let\n=================\n")
+    val nullableName1: String? = "Kotlin"
+    nullableName1?.let {
+        println("Nama $it tidak null")
+        println("Panjang $it adalah ${it.length}")
+    }
+
+    val nullName1: String? = null
+    nullName1?.let {
+        println("Ini tidak akan dieksekusi karena bernilai null")
     }
 }
