@@ -47,4 +47,16 @@ fun main(){
     nullName1?.let {
         println("Ini tidak akan dieksekusi karena bernilai null")
     }
+
+//  -----fungsi "also" mirip seperti "let" tetapi hanya berfungsi untuk
+//  mengeksekusi fungsi sampingan dan tidak berefek pada objek utama-----
+    println("\n=================\npenggunaan fungsi also\n=================\n")
+    val nullableValue: String? = "Kotlin"
+
+    val result2 = nullableValue?.also {
+        println("Nama saat ini $it")
+        println("Panjang nama saat ini ${it.length}")
+    }
+
+    println(result2)
 }
