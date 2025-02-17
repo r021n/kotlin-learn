@@ -12,4 +12,14 @@ fun main(){
     val nullName: String? = null
     val nullNameLength = nullName?.length
     println(nullNameLength)
+
+//  -----operator elvis "?:" untuk memberikan nilai default jika objek bernilai null-----
+    println("\n=================\npenggunaan operator elvis (?:)\n=================\n")
+    val nullableName: String? = null
+    val defaultName = nullableName ?: "Guest"
+    println(defaultName)
+
+    val nonNullableName: String? = "Anton"
+    val result = nonNullableName ?: "Dono"
+    println(result)
 }
