@@ -5,7 +5,7 @@ abstract class Vehicle(var brand: String, var model: String, var year: Int) {
     abstract fun stopEngine()
 
     fun getVehicleInfo(): String {
-        return "Merek: ${this.brand}, Model: ${this.model}, Year: ${this.model}"
+        return "Merek: ${this.brand}, Model: ${this.model}, Year: ${this.year}"
     }
 }
 
