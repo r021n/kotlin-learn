@@ -56,4 +56,22 @@ fun main() {
     val car1 = Car("Toyota", "Avanza", 2020, 4)
     val motorcycle1 = Motorcycle("Honda", "vario", 2022, "4-tak")
     val truck1 = Truck("Hino", "Ranger", 2018, 18.0)
+
+    val vehicles: List<Vehicle> = listOf(car1, motorcycle1, truck1)
+
+    for (vehicle in vehicles) {
+        println("\n----Informasi Kendaraan----")
+        println(vehicle.getVehicleInfo())
+        vehicle.startEngine()
+        vehicle.stopEngine()
+
+//        penggunaan polymorphism
+        if (vehicle is Car) {
+            vehicle.honk()
+        } else if (vehicle is Motorcycle) {
+            vehicle.wheelie()
+        } else if (vehicle is Truck) {
+            vehicle.loadCargo()
+        }
+    }
 }
